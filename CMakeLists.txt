@@ -15,6 +15,17 @@ if (NOT fmt_FOUND)
     FetchContent_MakeAvailable(fmt)
 endif ()
 
+FetchContent_Declare(
+        cxxopts
+        GIT_REPOSITORY  https://github.com/jarro2783/cxxopts
+        GIT_TAG         v3.3.1
+        GIT_SHALLOW     TRUE
+)
+FetchContent_MakeAvailable(cxxopts)
+
+
 
 add_executable(SourceTokenizer main.cc)
-target_link_libraries(SourceTokenizer PRIVATE fmt::fmt)
+target_link_libraries(SourceTokenizer PRIVATE
+        fmt::fmt cxxopts
+)
