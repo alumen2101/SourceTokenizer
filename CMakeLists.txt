@@ -23,8 +23,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cxxopts)
 
-
-
 add_executable(SourceTokenizer main.cc)
 target_link_libraries(SourceTokenizer PRIVATE
         fmt::fmt cxxopts

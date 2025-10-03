@@ -5,18 +5,18 @@
 #include "cxxopts.hpp"
 
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     fmt::print("Hello World\n");
     std::cout << std::filesystem::current_path() << std::endl;
 
-    cxxopts::Options options("SourceTokenizer", "One line description of MyProgram");
+    cxxopts::Options options(
+        "SourceTokenizer", "Tokenizing your source code to feed it to LLMs"
+    );
 
     options.add_options()
-      ("d,debug", "Enable debugging") // a bool parameter
-      ("i,integer", "Int param", cxxopts::value<int>())
-      ("f,file", "File name", cxxopts::value<std::string>())
-      ("v,verbose", "Verbose output", cxxopts::value<bool>()->default_value("false"))
-      ;
+            ("d, dir", "Directory path", cxxopts::value<std::filesystem::path>())
+            ("o, output", "Output to specified file", cxxopts::value<std::string>())
+            ("v,verbose", "Verbose output", cxxopts::value<bool>()->default_value("false"));
 
     auto result = options.parse(argc, argv);
 
